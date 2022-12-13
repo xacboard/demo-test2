@@ -51,5 +51,13 @@ public class UserController {
         return newObject.toJSONString();
     }
 
+    @GetMapping("/getWords")
+    public String getWords() {
+        for (int i = 2; i < 60; i++) {
+            System.out.println("Form1.CheckBox" + i + ".Value = 0");
+        }
+        return "";
+    }
+
 
 }
