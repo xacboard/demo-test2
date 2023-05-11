@@ -1,5 +1,6 @@
 package com.example.demotest2.controller;
 
+import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
 import com.example.demotest2.utils.BaiduTranslationUtils;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -56,6 +58,27 @@ public class UserController {
         for (int i = 2; i < 60; i++) {
             System.out.println("Form1.CheckBox" + i + ".Value = 0");
         }
+        return "";
+    }
+
+    @GetMapping("/getPassword")
+    public String getPassword() {
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("action", "downprocess");
+        paramMap.put("sign", "A2UHOV5vUGFSW1FuBjZTb1Y6V2QHagMyBDpUZAZtVGBVcwAjAWEDZgdnC2oBYFxrAWMHMlM_aVmQDNg_c_c");
+        paramMap.put("p", "gpks");
+        System.out.println(System.currentTimeMillis());
+        for (int i = 0; i < 100; i++) {
+            String result= HttpUtil.post("https://wwn.lanzoul.com/ajaxm.php", paramMap);
+//            JSONObject jsonObject = JSONObject.parseObject(result);
+//            if ("密码不正确".equals(jsonObject.getString("inf"))) {
+//                System.out.println("密码不正确！");
+//            }else {
+//                System.out.println("密码正确！");
+//            }
+            System.out.println(i+": "+result);
+        }
+        System.out.println(System.currentTimeMillis());
         return "";
     }
 
